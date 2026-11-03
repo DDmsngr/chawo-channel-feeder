@@ -26,7 +26,9 @@ const CHANNELS = [
   { handle: 'chawo_science', sources: ['nplusone', 'habr_com', 'rozetked', 'postnauka', 'ixbt_official', 'tproger_official'], everyMin: 30, perRun: 4, maxAgeH: 24 },
   { handle: 'chawo_fashion', sources: ['LIVfashionmag', 'trendsetter', 'looktrend', 'goldchihuahua', 'beautyinsider'], everyMin: 45, perRun: 4, maxAgeH: 72 },
   { handle: 'chawo_food', sources: ['thesaltmagazine', 'topretsept', 'kulinarka', 'foodblogger'], everyMin: 45, perRun: 4, maxAgeH: 36 },
-  { handle: 'chawo_sochi', sources: ['sochi24tv', 'sochi_online', 'sochi_today', 'sochigid', 'kuban24'], everyMin: 15, perRun: 4, maxAgeH: 24 },
+  // Город — Петербург (решение 03.11.2026). Источники проверены 03.11.2026:
+  // у всех свежие посты в веб-превью t.me/s/.
+  { handle: 'chawo_spb', sources: ['fontankaspb', 'spbtoday', 'kudagospb'], everyMin: 15, perRun: 4, maxAgeH: 24 },
   { handle: 'chawo_travel', sources: ['tutu_travel', 'aviasales'], everyMin: 60, perRun: 2, maxAgeH: 48 },
   { handle: 'chawo_kino', sources: ['kinopoisk', 'kineman'], everyMin: 60, perRun: 2, maxAgeH: 96 },
   { handle: 'chawo_sport', sources: ['sportsru', 'championat', 'sovsport'], everyMin: 20, perRun: 4 },
