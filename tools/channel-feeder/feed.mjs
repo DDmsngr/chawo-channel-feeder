@@ -9,7 +9,11 @@
 // Запуск: SUPABASE_URL=… SUPABASE_SERVICE_ROLE_KEY=… node feed.mjs [--dry]
 
 const SUPABASE_URL = process.env.SUPABASE_URL?.replace(/\/$/, '');
+// Токен узкой роли channel_feeder (миграция 0119 приложения): читает посты
+// каналов, кладёт файлы в папку канала и зовёт channel_feed_post. Имя
+// переменной старое. В apikey идёт открытый anon-ключ.
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const API_KEY = process.env.SUPABASE_ANON_KEY || SERVICE_KEY;
 const DRY = process.argv.includes('--dry');
 
 // everyMin — минимальный промежуток между постами канала (по времени постов в
@@ -220,7 +224,7 @@ async function fetchChannel(channel) {
 // ── Supabase ──────────────────────────────────────────────────────────────
 
 const headers = () => ({
-  apikey: SERVICE_KEY,
+  apikey: API_KEY,
   Authorization: `Bearer ${SERVICE_KEY}`,
 });
 

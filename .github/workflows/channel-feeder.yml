@@ -46,13 +46,14 @@ jobs:
         run: node --test tools/channel-feeder/feed.test.mjs
 
       # С 12.10.2026 база на своём сервере (Selectel). Адрес прямой, как в сборке
-      # приложения; ключ отдельный секрет CHAWO_SERVICE_KEY (ключ service_role этого
-      # сервера), чтобы не трогать старый SUPABASE_SERVICE_ROLE_KEY от Supabase Cloud.
-      # Положить ключ: tools/ops/set-chawo-service-key.ps1.
+      # приложения. Ключ не service_role, а узкий токен роли channel_feeder: умеет
+      # только то, что делает наполнитель. Положить: tools/ops/set-robot-token.ps1
+      # в репозитории приложения.
       - name: Feed channels
         env:
           SUPABASE_URL: https://api-socialworld.deepdrift.tech
-          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.CHAWO_SERVICE_KEY }}
+          SUPABASE_ANON_KEY: ${{ secrets.CHAWO_ANON_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.CHAWO_FEEDER_TOKEN }}
         run: node tools/channel-feeder/feed.mjs
 
       # Следующий заход через ~8 минут, даже если этот упал (временный сбой
